@@ -1,0 +1,27 @@
+plugins {
+    id 'java'
+}
+
+/*
+ * task not needed, instead use: 
+ * gradle wrapper --gradle-version 5.6 --distribution-type all
+ * to initialize wrapper.
+ *task wrapper{
+ *    gradleVersion = '5.6'
+ *    distributionUrl = distributionUrl.replace("bin", "all")
+ *}
+ */
+
+compileJava.options.encoding = 'UTF-8'
+sourceCompatibility = 1.8
+
+dependencies {
+    
+}
+
+// In this section you declare where to find the dependencies of your project
+repositories {
+    // Use jcenter for resolving your dependencies.
+    // You can declare any Maven/Ivy/file repository here.
+    jcenter()
+}
