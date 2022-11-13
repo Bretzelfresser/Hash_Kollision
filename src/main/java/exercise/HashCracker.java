@@ -23,13 +23,15 @@ public class HashCracker extends AHashCracker {
             if (StringHasher.erzeugeSHA512Hash(kandidatenListe[i]).equals(gesuchterHash)){
                 loesung = kandidatenListe[i];
                 threadHatLoesungGefunden = true;
-                Main.irgendwerHatLoesungGefunden = false;
+                Main.irgendwerHatLoesungGefunden = true;
                 System.out.println("found similar Hash from Thread " + Thread.currentThread().getName());
                 System.out.println("and by the way the found String was: " + loesung);
+                System.out.println("found the match at [" + i + "/" + kandidatenListe.length + "]");
                 break;
             }
             if (Main.irgendwerHatLoesungGefunden){
                 System.out.println("ein anderer Thread hat eine Lösung gefunden");
+                System.out.println("got interrupted from other thread at [" + i + "/" + kandidatenListe.length + "]");
                 return;
             }
         }
