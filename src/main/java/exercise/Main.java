@@ -4,6 +4,8 @@ import main.AHashCracker;
 import main.AMain;
 import main.Kandidatengenerator;
 
+import java.io.PrintStream;
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicBoolean;

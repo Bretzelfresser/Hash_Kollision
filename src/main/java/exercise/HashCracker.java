@@ -13,14 +13,14 @@ public class HashCracker extends AHashCracker {
     }
 
     public HashCracker(String[] searchThrew, int offset, int step, String searchingForHash, String threadName) {
-       this(searchThrew, offset, step, searchingForHash);
-       setName(threadName);
+        this(searchThrew, offset, step, searchingForHash);
+        setName(threadName);
     }
 
     @Override
     public void run() {
         for (int i = offset; i < kandidatenListe.length; i += schrittweite) {
-            if (StringHasher.erzeugeSHA512Hash(kandidatenListe[i]).equals(gesuchterHash)){
+            if (StringHasher.erzeugeSHA512Hash(kandidatenListe[i]).equals(gesuchterHash)) {
                 loesung = kandidatenListe[i];
                 threadHatLoesungGefunden = true;
                 Main.irgendwerHatLoesungGefunden = true;
@@ -29,8 +29,8 @@ public class HashCracker extends AHashCracker {
                 System.out.println("found the match at [" + i + "/" + kandidatenListe.length + "]");
                 break;
             }
-            if (Main.irgendwerHatLoesungGefunden){
-                System.out.println("ein anderer Thread hat eine Lösung gefunden");
+            if (Main.irgendwerHatLoesungGefunden) {
+                System.out.println("ein anderer Thread hat eine Loesung gefunden");
                 System.out.println("got interrupted from other thread at [" + i + "/" + kandidatenListe.length + "]");
                 return;
             }
