@@ -4,6 +4,7 @@ import main.AHashCracker;
 import main.StringHasher;
 
 public class HashCracker extends AHashCracker {
+    public static volatile boolean irgendwerHatLoesungGefunden = false;
 
     public HashCracker(String[] searchThrew, int offset, int step, String searchingForHash) {
         this.kandidatenListe = searchThrew;
@@ -23,13 +24,13 @@ public class HashCracker extends AHashCracker {
             if (StringHasher.erzeugeSHA512Hash(kandidatenListe[i]).equals(gesuchterHash)) {
                 loesung = kandidatenListe[i];
                 threadHatLoesungGefunden = true;
-                Main.irgendwerHatLoesungGefunden = true;
+                irgendwerHatLoesungGefunden = true;
                 System.out.println("found similar Hash from Thread " + Thread.currentThread().getName());
                 System.out.println("and by the way the found String was: " + loesung);
                 System.out.println("found the match at [" + i + "/" + kandidatenListe.length + "]");
                 break;
             }
-            if (Main.irgendwerHatLoesungGefunden) {
+            if (irgendwerHatLoesungGefunden) {
                 System.out.println("ein anderer Thread hat eine Loesung gefunden");
                 System.out.println("got interrupted from other thread at [" + i + "/" + kandidatenListe.length + "]");
                 return;
